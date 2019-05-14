@@ -1,28 +1,58 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+     <input type="button" v-on:click="func(0)" value="Показать значения!"/>
+  <ul class='list'>
+     <li v-for="block in block1" v-bind:key="block.id">{{ block.type }} {{ block.a }} {{ block.b}} </li>
+  </ul>
+   <ul class='list'>
+     <li v-for="block in block2" v-bind:key="block.id">{{ block.type }} {{ block.x }} {{block.n }} </li>
+  </ul>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+
+  data () {
+    return  {
+      block1 : [
+          {id : 1, type : 'ADD', a : 0, b : 3}
+          
+      ] ,
+      block2 : [
+          {id : 2, type : 'MOD', x : 0, n : 16}
+      ]     
+    }
+  },
+  
+ methods :  {
+    func(a) {
+    var b = 3;
+    var n = 16;
+    var x;
+    for ( var i = 0; i < 10;  ) {
+      x = a + b;
+      a = x % n;
+      i++;
+      this.block1.push({id : 1, type : 'ADD', a : x , b : 3}),
+      this.block2.push({id : 2, type : 'MOD', x : a , n : 16})
+        
+      
+        //alert ("Шаг " + i + " /" + a + "  / " + b + " /" + x + " /" + n);
+    }
+    
+      }
   }
 }
+
+
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  width: 200px;
+  margin: 0 50px;
+
+  }
 </style>
