@@ -38,8 +38,7 @@ export default {
       this.block1.push({id : 1, type : 'ADD', a : x , b : 3}),
       this.block2.push({id : 2, type : 'MOD', x : a , n : 16})
         
-      
-        //alert ("Шаг " + i + " /" + a + "  / " + b + " /" + x + " /" + n);
+
     }
     
       }
